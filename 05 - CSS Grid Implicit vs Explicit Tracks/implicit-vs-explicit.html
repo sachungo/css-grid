@@ -19,6 +19,12 @@
   <style>
     .container {
       display: grid;
+      grid-gap: 20px;
+      /* explicitly defined columns while rows are implicit as they have not been defined */
+      grid-template-columns: 200px 400px;
+
+      /* Define the size of implicit rows */
+      grid-auto-rows: 100px;
     }
   </style>
 </body>
