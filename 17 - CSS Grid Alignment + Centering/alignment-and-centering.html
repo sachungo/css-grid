@@ -71,6 +71,21 @@
       display: grid;
       grid-gap: 20px;
       grid-template-columns: repeat(10, 1fr);
+      grid-template-rows: repeat(5, 150px);
+      /* justify-items: center;
+      align-items: center; */
+      place-items: stretch stretch; /* short hand for `justify-items`, and `align-items` */
+
+      justify-content: space-between;
+    }
+
+    .itm {
+      background: salmon;
+    }
+
+    .itm7 {
+      justify-self: center;
+      align-self: center;
     }
   </style>
 </body>
