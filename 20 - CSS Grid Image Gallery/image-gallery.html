@@ -61,8 +61,8 @@
     .item {
       overflow: hidden;
       display: grid;
-      grid-template-columns: 1;
       grid-template-rows: 1;
+      grid-template-columns: 1;
     }
 
     .item img {
@@ -74,15 +74,19 @@
     }
 
     .item__overlay {
-      background: #ffc60032;
       grid-column: 1 / -1;
       grid-row: 1 / -1;
+      background: #ffc60032;
       position: relative;
       display: grid;
       justify-items: center;
       align-items: center;
-      transition: 0.2s;
       transform: translateY(100%);
+      transition: 0.2s;
+    }
+
+    .item:hover .item__overlay {
+      transform: translateY(0);
     }
 
     .item__overlay button {
@@ -94,11 +98,6 @@
       padding: 5px;
     }
 
-    .item:hover .item__overlay {
-      transform: translateY(0);
-    }
-
-
     .item.v2 {
       grid-row: span 2;
     }
@@ -106,7 +105,6 @@
     .item.v3 {
       grid-row: span 3;
     }
-
     .item.v4 {
       grid-row: span 4;
     }
@@ -118,11 +116,9 @@
     .item.h3 {
       grid-column: span 3;
     }
-
     .item.h4 {
       grid-column: span 4;
     }
-
 
     .overlay {
       position: fixed;
@@ -155,15 +151,15 @@
   <script>
     const gallery = document.querySelector('.gallery');
     const overlay = document.querySelector('.overlay');
-    const overlayImage = overlay.querySelector('img');
-    const overlayClose = overlay.querySelector('.close');
+    const overlayImage = document.querySelector('img');
+    const overlayClose = document.querySelector('.close');
 
     function generateHTML([h, v]) {
       return `
         <div class="item h${h} v${v}">
-          <img src="images/${randomNumber(12)}.jpg">
+          <img src="images/${randomNumber(12)}.jpg" />
           <div class="item__overlay">
-            <button>View →</button>
+            <button>View -></button>
           </div>
         </div>
       `;
@@ -179,22 +175,25 @@
       overlay.classList.add('open');
     }
 
-
     function close() {
       overlay.classList.remove('open');
     }
 
-    const digits = Array.from({ length: 50 }, () => [randomNumber(4), randomNumber(4)]).concat([[1, 1], [1, 1], [1, 1], [1, 1], [1, 1], [1, 1], [1, 1], [1, 1], [1, 1], [1, 1], [1, 1], [1, 1], [1, 1], [1, 1], [1, 1], [1, 1], [1, 1], [1, 1]])
+    const digits = Array.from(
+      { length: 50 },
+      () => [randomNumber(4), randomNumber(4)]
+    ).concat([
+      [1, 1], [1, 1], [1, 1], [1, 1], [1, 1], [1, 1], [1, 1], [1, 1]
+      , [1, 1] , [1, 1] , [1, 1] , [1, 1] , [1, 1], [1, 1], [1, 1], [1, 1], [1, 1]
+    ]);
 
     const html = digits.map(generateHTML).join('');
     gallery.innerHTML = html;
 
     const items = document.querySelectorAll('.item');
-
     items.forEach(item => item.addEventListener('click', handleClick));
 
     overlayClose.addEventListener('click', close);
-
   </script>
 </body>
 
