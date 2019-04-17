@@ -20,8 +20,28 @@
   </div>
 
   <style>
+    /*
+     * The buttons take as much space as they need and the
+     * scrubber takes the remaining value.
+     * In flexbox, the CSS will be:
+     *  .controls {
+     *    margin: 200px 0;
+     *    display: flex;
+     *    align-items: center;
+     *  }
+     *
+     *  .scrubber {
+     *    ...
+     *   flex: 1;
+     *  }
+     */
     .controls {
       margin: 200px 0;
+
+      display: grid;
+      /* this is brittle as deleting one button messes the layout columns. Therefore, flexbox is more ideal here */
+      grid-template-columns: auto auto auto 1fr auto auto;
+      align-items: center;
     }
 
     .scrubber {

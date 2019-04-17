@@ -24,7 +24,16 @@
   </div>
 
   <style>
-    .unknown {}
+    /*
+     *
+     * Using flexbox will introduce weird margin(e.g. 20px) especially
+     * when things start to wrap. Grid is more suitable in this case
+     */
+    .unknown {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
+      grid-gap: 20px;
+    }
   </style>
 </body>
 

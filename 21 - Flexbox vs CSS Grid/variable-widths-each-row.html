@@ -21,10 +21,18 @@
     <div class="item">Short</div>
   </div>
   <style>
-    .flex-container {}
+    /*
+     * Grid is not suitable here as the items are not
+     * lining up perfectly columnwise
+     */
+    .flex-container {
+      display: flex;
+      flex-wrap: wrap;
+    }
 
     .flex-container>* {
       margin: 10px;
+      flex: 1;
     }
   </style>
 </body>

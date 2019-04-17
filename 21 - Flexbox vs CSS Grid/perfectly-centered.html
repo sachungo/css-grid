@@ -20,13 +20,16 @@
     .hero {
       height: 200px;
       background: rgba(255, 255, 255, 0.2);
-      /* display: grid;
-      align-content: center;
-      justify-items: center; */
-      display: flex;
+
+      /* display: flex;
       flex-direction: column;
-      justify-content: center;
       align-items: center;
+      justify-content: center; */
+
+      display: grid;
+      justify-items: center;
+      /* align-items: center /* makes the space between <p> and <h2> bigger depending on the container size */
+      align-content: center;
     }
   </style>
 </body>
